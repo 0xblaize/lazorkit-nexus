@@ -9,6 +9,9 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@lazorkit/wallet": "^2.0.1",
+    "@lazorkit/wallet-mobile-adapter": "^1.5.1",
+    "@solana/web3.js": "^1.98.4",
     "next": "16.1.1",
     "react": "19.2.3",
     "react-dom": "19.2.3"
