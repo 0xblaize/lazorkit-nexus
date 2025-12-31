@@ -1,8 +1,8 @@
 'use client';
 
 import { useWallet } from '@lazorkit/wallet';
-import { ConnectButton } from '@/components/ConnectButton';
-import { TransferButton } from '@/components/TransferButton';
+import { ConnectButton } from '@/components/connectButton';
+import { TransferButton } from '@/components/transferButton';
 import { ShieldCheck, Cpu, Globe } from 'lucide-react';
 
 export default function Home() {

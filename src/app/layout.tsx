@@ -1,5 +1,5 @@
 import './globals.css';
-import { LazorProvider } from '@/providers/LazorProvider';
+import { LazorProvider } from '@/providers/lazorProvider';
 
 export const metadata = {
   title: 'Lazorkit Nexus Starter',
