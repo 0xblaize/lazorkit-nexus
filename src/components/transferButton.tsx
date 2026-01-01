@@ -2,24 +2,27 @@
 
 import { useWallet } from '@lazorkit/wallet';
 import { SystemProgram, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js';
+import { Zap, Loader2 } from 'lucide-react';
+import { useState } from 'react';
 
 export function TransferButton() {
   const { signAndSendTransaction, smartWalletPubkey, isConnected } = useWallet();
+  const [loading, setLoading] = useState(false);
 
   const handleGaslessTransfer = async () => {
     if (!smartWalletPubkey) return alert("Connect first!");
+    setLoading(true);
 
     try {
+      // 1. We send a tiny amount (0.0001 SOL) to avoid "Insufficient Funds"
       const destination = new PublicKey('7BeWr6tVa1pYgrEddekYTnQENU22bBw9H8HYJUkbrN71');
       const instruction = SystemProgram.transfer({
         fromPubkey: smartWalletPubkey,
         toPubkey: destination,
-        lamports: 0.001 * LAMPORTS_PER_SOL,
+        lamports: 0.0001 * LAMPORTS_PER_SOL, 
       });
 
-      // FIX: Add a console log to track the fetch start
-      console.log("Fetching signature from Portal...");
-
+      // 2. Execute with Paymaster
       const signature = await signAndSendTransaction({
         instructions: [instruction],
         transactionOptions: {
@@ -27,24 +30,36 @@ export function TransferButton() {
         }
       });
 
-      alert("Success! Signature: " + signature.slice(0, 8));
+      alert("Success! Check the console for the signature.");
+      console.log("Tx Signature:", signature);
 
     } catch (error: any) {
-      // 🚨 THIS IS WHERE WE CATCH THE 'FAILED TO FETCH'
-      if (error.name === 'TypeError' || error.message.includes('fetch')) {
-        console.error("CORS or Network Blocked the Request:", error);
-        alert("Network Error: The Lazorkit Paymaster is blocking the request from localhost. Try using a different browser (Chrome) or disabling Brave Shields.");
+      console.error("Tx Error:", error);
+      // Explaining the 0x1 error to the user
+      if (error.message.includes('0x1')) {
+        alert("Bounty Demo Note: Your Smart Wallet needs a tiny bit of SOL to send. Even though GAS is free, the actual SOL being sent must exist in the wallet.");
       } else {
-        alert("Transaction failed: " + error.message);
+        alert("Transaction Failed: " + error.message);
       }
+    } finally {
+      setLoading(false);
     }
   };
 
   if (!isConnected) return null;
 
   return (
-    <button onClick={handleGaslessTransfer} className="...">
-      Send Gasless SOL
+    <button 
+      onClick={handleGaslessTransfer} 
+      disabled={loading}
+      className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-4 px-6 rounded-2xl flex items-center justify-center gap-2 transition-all shadow-lg shadow-indigo-500/20 disabled:opacity-50"
+    >
+      {loading ? (
+        <Loader2 className="animate-spin" />
+      ) : (
+        <Zap size={20} className="fill-white" />
+      )}
+      <span>{loading ? 'Processing...' : 'Send Gasless SOL'}</span>
     </button>
   );
 }
