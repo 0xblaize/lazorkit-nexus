@@ -37,7 +37,7 @@ export function TransferButton() {
       console.error("Tx Error:", error);
       // Explaining the 0x1 error to the user
       if (error.message.includes('0x1')) {
-        alert("Bounty Demo Note: Your Smart Wallet needs a tiny bit of SOL to send. Even though GAS is free, the actual SOL being sent must exist in the wallet.");
+        alert(" Your Smart Wallet needs a tiny bit of SOL to send. Even though GAS is free, the actual SOL being sent must exist in the wallet.");
       } else {
         alert("Transaction Failed: " + error.message);
       }
