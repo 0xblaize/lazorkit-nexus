@@ -19,7 +19,7 @@ export function TransferButton() {
       const instruction = SystemProgram.transfer({
         fromPubkey: smartWalletPubkey,
         toPubkey: destination,
-        lamports: 0.0001 * LAMPORTS_PER_SOL, 
+        lamports: 0.00001 * LAMPORTS_PER_SOL, 
       });
 
       // 2. Execute with Paymaster

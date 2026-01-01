@@ -1,7 +1,7 @@
 'use client';
 
 import { useWallet } from '@lazorkit/wallet';
-import { LogOut, Copy, Check, User } from 'lucide-react'; // Added Copy and Check icons
+import { LogOut, Copy, Check, User } from 'lucide-react'; 
 import { useState } from 'react';
 
 export function ConnectButton() {
