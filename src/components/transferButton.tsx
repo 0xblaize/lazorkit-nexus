@@ -20,7 +20,7 @@ export function TransferButton() {
       const instruction = SystemProgram.transfer({
         fromPubkey: smartWalletPubkey,
         toPubkey: destination,
-        lamports: 0.0001 * LAMPORTS_PER_SOL, 
+        lamports: 0.0000 * LAMPORTS_PER_SOL, 
       });
 
       // signAndSendTransaction returns the transaction signature string
