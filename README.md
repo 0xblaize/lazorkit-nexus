@@ -32,6 +32,8 @@ Lazorkit Nexus is a high-performance Solana starter template designed to onboard
 git clone [https://github.com/YOUR_USERNAME/lazorkit-nexus.git](https://github.com/YOUR_USERNAME/lazorkit-nexus.git)
 cd lazorkit-nexus
 npm install
+
+
 2. Configure Environment
 Create a .env.local file in the root directory:
 
@@ -39,6 +41,7 @@ Code snippet
 
 NEXT_PUBLIC_RPC_URL=[https://api.devnet.solana.com](https://api.devnet.solana.com)
 NEXT_PUBLIC_PAYMASTER_URL=[https://kora.devnet.lazorkit.com](https://kora.devnet.lazorkit.com)
+
 3. Run Development Server
 Bash
 
