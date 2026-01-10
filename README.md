@@ -28,10 +28,10 @@ Lazorkit Nexus is a high-performance Solana starter template designed to onboard
 ## 🚀 Quick Start
 
 ### 1. Clone & Install
-```bash
-git clone [https://github.com/YOUR_USERNAME/lazorkit-nexus.git](https://github.com/YOUR_USERNAME/lazorkit-nexus.git)
+bash
+git clone [https://github.com/0xblaize/lazorkit-nexus.git](https://github.com/0xblaize/lazorkit-nexus)
 cd lazorkit-nexus
-npm install
+npm install 
 
 
 2. Configure Environment
