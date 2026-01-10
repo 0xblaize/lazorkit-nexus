@@ -65,7 +65,6 @@ Distributed under the MIT License.
 ---
 
 ## 🏗️ Architecture Structure
-Include this section in your README or a separate `ARCHITECTURE.md` file to show the judges you understand the system design.
 
 ### **System Workflow**
 The architecture follows a **Hybrid Account Abstraction** model.
